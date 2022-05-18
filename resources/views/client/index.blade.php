@@ -23,22 +23,8 @@
 <body id = body>
     @include('client.layouts.header')
     @include('client.layouts.menu')
-
-    <div class="hero-slider">
-        <div class="slider-item th-fullpage hero-area" style="background-image: url({{asset('assets/client/images/slider/slider-1.jpg')}});">
-          <div class="container">
-            <div class="row">
-              <div class="col-lg-8 text-center">
-                <p data-duration-in=".3" data-animation-in="fadeInUp" data-delay-in=".1"></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-          <!-- 
-    Essential Scripts
-    =====================================-->
+    @yield('content')
+    @include('client.layouts.footer')
     
     <!-- Main jQuery -->
     <script src="{{ asset('assets/client/plugins/jquery/dist/jquery.min.js')}}"></script>

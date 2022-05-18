@@ -20,8 +20,26 @@
 
                     <!-- Home -->
                     <li class="dropdown ">
-                        <a href="index.html">Home</a>
+                        <a href="{{url('/')}}">Home</a>
                     </li><!-- / Home -->
+                    <li class="dropdown dropdown-slide">
+						<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
+							role="button" aria-haspopup="true" aria-expanded="false">Category<span
+								class="tf-ion-ios-arrow-down"></span></a>
+						<div class="dropdown-menu">
+							<div class="row">
+								<!-- Basic -->
+								<div class="col-lg-12 col-md-12 mb-sm-6">
+									<ul>
+                                        @foreach($category as $cate)
+										<li><a href="confirmation.html">{{$cate->name}}</a></li>
+                                        @endforeach
+									</ul>
+								</div>
+
+							</div><!-- / .row -->
+						</div><!-- / .dropdown-menu -->
+					</li><!-- / Elements -->
                     <!-- Home -->
                     <li class="dropdown ">
                         <a href="index.html">Blog</a>

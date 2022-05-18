@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\SlideController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Client\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,13 +17,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('client.index');
-});
+Route::get('/', [HomeController::class, 'index']);
 Route::prefix('dashboard')->middleware(['auth'])->group(function () {
     Route::get('/', [DashBoardController::class, 'index']);
     Route::POST('/cache-clear', [DashBoardController::class, 'cacheClear']);
 });
 Route::resource('category', CategoryController::class)->middleware(['auth']);
+Route::resource('slide', SlideController::class)->middleware(['auth']);
 
 require __DIR__.'/auth.php';
