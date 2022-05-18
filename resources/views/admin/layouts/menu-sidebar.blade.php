@@ -20,6 +20,11 @@
                     <a href="{{url('slide')}}"><i class="fas fa-sliders-h"></i>Slide</a>
                 </li>
             </ul>
+            <ul class="list-unstyled navbar__list">
+                <li>
+                    <a href="{{url('product')}}"><i class="fas fa-bullseye"></i>Product</a>
+                </li>
+            </ul>
         </nav>
     </div>
 </aside>
