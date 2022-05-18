@@ -1087,7 +1087,7 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 
 .product-item .product-thumb img {
   width: 100%;
-  height: auto;
+  height: 30rem;
 }
 
 .product-item .product-thumb .bage {
@@ -1217,6 +1217,10 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 @media (max-width: 768px) {
   .product-modal .modal-dialog {
     width: 100%;
+  }
+
+  .product-item .product-thumb img {
+    height: 20rem;
   }
 }
 
@@ -2696,6 +2700,12 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
 .social-media li a i {
   font-size: 20px;
   color: #555;
+}
+
+.relative{
+  background-color: white;
+  padding: 1.5rem 0.5rem;
+  margin: 1rem 0.5rem;
 }
 
 /*# sourceMappingURL=style.css.map */

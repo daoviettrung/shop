@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Product;
 
 
 class HomeController extends Controller
@@ -15,6 +16,7 @@ class HomeController extends Controller
     public function index(){
         $slide = DB::table('slide')->skip(0)->take(5)->get();
         $category = Category::all();
-        return view('client.pages.home', compact('slide', 'category'));
+        $product = DB::table('product')->simplePaginate(9);
+        return view('client.pages.home', compact('slide', 'category', 'product'));
     }
 }
