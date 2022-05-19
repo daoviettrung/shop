@@ -32,7 +32,7 @@
 								<div class="col-lg-12 col-md-12 mb-sm-6">
 									<ul>
                                         @foreach($category as $cate)
-										<li><a href="confirmation.html">{{$cate->name}}</a></li>
+										<li><a href="{{url('categories/'.urlencode($cate->slug))}}">{{$cate->name}}</a></li>
                                         @endforeach
 									</ul>
 								</div>

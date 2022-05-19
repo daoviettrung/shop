@@ -47,7 +47,7 @@
                             </div>
                             <div class="product-content">
                                 <h4><a href="product-single.html">Reef Boardsport</a></h4>
-                                <p class="price">$200</p>
+                                <p class="price">{{$pr->price}}.VND</p>
                             </div>
                         </div>
                     </div>
