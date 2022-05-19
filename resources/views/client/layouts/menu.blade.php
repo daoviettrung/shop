@@ -42,7 +42,7 @@
 					</li><!-- / Elements -->
                     <!-- Home -->
                     <li class="dropdown ">
-                        <a href="index.html">Blog</a>
+                        <a href="{{url('blog')}}">Blog</a>
                     </li><!-- / Home -->
                 </ul><!-- / .nav .navbar-nav -->
 

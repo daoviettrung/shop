@@ -48,4 +48,5 @@
 
     <!-- Main Js File -->
     <script src="{{ asset('assets/client/js/script.js')}}"></script>
+    @yield('script')
 </body>
