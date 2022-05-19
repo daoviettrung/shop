@@ -128,6 +128,18 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         $category = Category::find($id);
+        $getImageProduct = DB::table('product')
+        ->where('category', $id)
+        ->pluck('image');
+        DB::table('product')
+        ->where('category', $id)
+        ->delete();
+        foreach($getImageProduct as $value){
+            $path = 'assets/uploads/product/' . $value;
+            if(File::exists($path)){
+                File::delete($path);
+            }
+        }
         if($category->image){
             $path = 'assets/uploads/category/' . $category->image;
             if(File::exists($path)){
