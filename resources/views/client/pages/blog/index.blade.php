@@ -22,11 +22,11 @@
                     @foreach ($blog as $b)
                         <div class="post">
                             <div class="post-media post-thumb">
-                                <a href="blog-single.html">
+                                <a href="{{url('blog/'. $b->slug)}}">
                                     <img src="{{ asset('assets/uploads/post/' . $b->image) }}" alt="">
                                 </a>
                             </div>
-                            <h2 class="post-title"><a href="blog-single.html">{{ $b->name }}</a></h2>
+                            <h2 class="post-title"><a href="{{url('blog/'. $b->slug)}}">{{ $b->name }}</a></h2>
                             <div class="post-meta">
                                 <ul>
                                     <li>
@@ -36,7 +36,7 @@
                             </div>
                             <div class="post-content">
                                 <p class="content-post">{{ $b->content }}</p>
-                                <a href="blog-single.html" class="btn btn-main">Continue Reading</a>
+                                <a href="{{url('blog/'. $b->slug)}}" class="btn btn-main">Continue Reading</a>
                             </div>
 
                         </div>
@@ -55,7 +55,7 @@
                                     </a>
                                     <div class="media-body">
                                         <h4 class="media-heading"><a class="title-blog-right" href="#!">{{ $b->name }}</a></h4>
-                                        <p class = "content-blog-right">{{$b->content}}</p>
+                                        <p class ="content-blog-right">{{$b->content}}</p>
                                     </div>
                                 </div>
                             @endforeach
@@ -103,8 +103,11 @@
             let text = $('.content-blog-right');
             let length = text.length;
             for (let i = 0; i < length; i++) {
-                if (text[i].innerText.length > 30) {
-                    text[i].innerHTML = text[i].innerText.slice(0, 10) + '...';
+                if (text[i].innerText.length > 170) {
+                    text[i].innerHTML = text[i].innerText.slice(0, 170) + '...';
+                }
+                else{
+                    text[i].innerHTML = text[i].innerText
                 }
             }
         }

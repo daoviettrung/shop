@@ -56,6 +56,7 @@ class PostController extends Controller
         $post->slug = $request->slug;
         $post->content = $request->content;
         $post->user_id = Auth::user()->id;
+        $post->view = 0;
         if ($request->hasFile('image')) {
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();

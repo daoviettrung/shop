@@ -47,7 +47,7 @@
                                 </td>
                                 </td>
                                 <td>
-                                    <button class="btn btn-primary">View detail</button>
+                                    <button class="btn btn-primary"><a class="text-white" href="{{url('blog/'. $p->slug)}}">View detail</a></button>
                                 </td>
                                 <td>
                                     {{ $p->view }}
