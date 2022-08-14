@@ -903,7 +903,6 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
   text-align: center;
   background-size: cover;
   position: relative;
-  z-index: 1;
 }
 
 .slider-item::after {
