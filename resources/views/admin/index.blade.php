@@ -91,6 +91,7 @@
     <script src="{{ asset('assets/admin/vendor/chartjs/Chart.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendor/select2/select2.min.js') }}">
     </script>
+    <script src="{{ asset('assets/index.js') }}"></script>
 
     <!-- Main JS-->
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
@@ -100,10 +101,6 @@
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-        });
-        // logout
-        $("#logout").click(function() {
-            $('#logout-form').submit();
         });
         tinymce.init({
             selector: 'textarea#myeditorinstance', // Replace this CSS selector to match the placeholder element for TinyMCE

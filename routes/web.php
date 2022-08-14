@@ -26,7 +26,7 @@ Route::prefix('blog')->group(function () {
     Route::get('/', [BlogController::class, 'index']);
     Route::get('/{slug}', [BlogController::class, 'show']);
 });
-Route::prefix('dashboard')->middleware(['auth'])->group(function () {
+Route::prefix('dashboard')->middleware(['auth.admin'])->group(function () {
     Route::get('/', [DashBoardController::class, 'index']);
     Route::POST('/cache-clear', [DashBoardController::class, 'cacheClear']);
 });
