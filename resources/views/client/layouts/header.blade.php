@@ -75,28 +75,9 @@
 						</div>
 
 					</li><!-- / Cart -->
-
-					<!-- Search -->
-					<li class="dropdown search dropdown-slide">
-						<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
-								class="tf-ion-ios-search-strong"></i> Search</a>
-						<ul class="dropdown-menu search-dropdown">
-							<li>
-								<form action="post"><input type="search" class="form-control" placeholder="Search..."></form>
-							</li>
-						</ul>
-					</li><!-- / Search -->
-
 					<!-- Languages -->
-					<li class="commonSelect">
-						<select class="form-control">
-							<option>EN</option>
-							<option>DE</option>
-							<option>FR</option>
-							<option>ES</option>
-						</select>
-					</li><!-- / Languages -->
-
+					<a class="auth" href="login">Đăng nhập</a>
+					<a class="auth" href="register">Đăng ký</a>
 				</ul><!-- / .nav .navbar-nav .navbar-right -->
 			</div>
 		</div>

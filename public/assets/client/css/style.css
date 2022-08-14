@@ -2707,4 +2707,9 @@ input[type="email"]:focus, input[type="password"]:focus, input[type="text"]:focu
   margin: 1rem 0.5rem;
 }
 
+
+.auth{
+  margin: 1rem;
+}
+
 /*# sourceMappingURL=style.css.map */
