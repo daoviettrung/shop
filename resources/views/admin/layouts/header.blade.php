@@ -10,7 +10,7 @@
                             </div>
                             <div class="account-dropdown js-dropdown">
                                 <div class="account-dropdown__footer">
-                                    <a id='logout' href="#"><i class="zmdi zmdi-home"></i>Home client</a>
+                                    <a id='home-client' href="{{ url('/') }}"><i class="zmdi zmdi-home"></i>Home client</a>
                                 </div>
                                 <div class="account-dropdown__footer">
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
