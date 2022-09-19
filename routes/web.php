@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\BlogController;
+use App\Http\Controllers\Auth\SocialController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('categories/{slug}', [HomeController::class, 'searchByCategory']);
+Route::get('login-facebook/{social}', [SocialController::class, 'getInfor']);
+Route::get('check-login-facebook/{social}', [SocialController::class, 'checkInfor']);
 Route::prefix('blog')->group(function () {
     Route::get('/', [BlogController::class, 'index']);
     Route::get('/{slug}', [BlogController::class, 'show']);

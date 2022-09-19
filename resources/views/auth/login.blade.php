@@ -39,9 +39,9 @@
                     <span class="ml-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
                 </label>
             </div>
-            <!-- login with google -->
+            <!-- login with facebook -->
             <div class="block mt-4">
-                <img style="max-width: 100%; height: 3rem; width: 3rem;" src="https://phukienbaominh.com/wp-content/uploads/2018/11/google-icon.jpg">
+                <a href="{{url('login-facebook/facebook')}}">Login facebook</a>
             </div>
 
             <div class="flex items-center justify-end mt-4">
