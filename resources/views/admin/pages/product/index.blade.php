@@ -28,7 +28,8 @@
                             <th>Name</th>
                             <th>Image</th>
                             <th>The remaining amount</th>
-                            <th>Price </th>
+                            <th>Price sale </th>
+                            <th>Price</th>
                             <th>Cost </th>
                             <th>Category </th>
                             <th>Description</th>
@@ -50,6 +51,9 @@
                                 </td>
                                 <td>
                                     {{ $pr->number }}
+                                </td>
+                                <td>
+                                    {{ $pr->price_sale}}
                                 </td>
                                 <td>
                                     {{ $pr->price}}

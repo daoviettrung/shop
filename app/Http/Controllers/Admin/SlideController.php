@@ -48,9 +48,6 @@ class SlideController extends Controller
      */
     public function store(Request $request)
     {
-        Validator::make($request->all(), [
-            'image' => 'max:300',
-        ])->validate();
         $slide = new Slide();
         $slide->name = $request->name;
         $slide->slug = $request->slug;
@@ -98,9 +95,6 @@ class SlideController extends Controller
      */
     public function update(Request $request, $id)
     {
-        Validator::make($request->all(), [
-            'image' => 'max:300',
-        ])->validate();
         $slide = Slide::find($id);
         $slide->name = $request->name;
         $slide->slug = $request->slug;

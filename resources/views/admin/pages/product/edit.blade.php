@@ -30,10 +30,18 @@
                     </div>
                     <div class="row form-group">
                         <div class="col col-md-3">
+                            <label for="price sale" class=" form-control-label">Price sale</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            <input type="number" id="price_sale" name="price_sale" class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
                             <label for="price" class=" form-control-label">Price</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="number" id="price" name="price" class="form-control" required value="{{ !empty($product->price) ? $product->price : '' }}">
+                            <input type="number" id="price" name="price" class="form-control" required>
                         </div>
                     </div>
                     <div class="row form-group">

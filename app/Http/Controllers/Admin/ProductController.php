@@ -56,6 +56,7 @@ class ProductController extends Controller
         $product = new Product();
         $product->name = $request->name;
         $product->slug = $request->slug;
+        $product->price_sale = $request->price_sale;
         $product->price = $request->price;
         $product->cost = $request->cost;
         $product->category   = $request->category;
@@ -111,6 +112,7 @@ class ProductController extends Controller
         $product = Product::find($id);
         $product->name = $request->name;
         $product->slug = $request->slug;
+        $product->price_sale = $request->price_sale;
         $product->price = $request->price;
         $product->cost = $request->cost;
         $product->category   = $request->category;
