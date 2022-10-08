@@ -1,17 +1,24 @@
 
 function addToCart(id, userId) {
+  if (typeof userId == 'undefined') {
+    var domain = window.location.href
+    let result = domain.replace(/[.*+?^${}()|[\]\\#]/gi, function (x) {
+      return '';
+    });
+    window.location.href = result + 'login';
+  }
   $.ajax({
-    headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-    type: "POST",
+    type: "post",
     url: "add-cart",
     data: {
-      id: id,
-      user_id: userId
+      'id': id,
+      'user_id': userId
     },
-    dataType: "json",
-    contentType: 'application/json; charset=utf-8'
-  })
-    .done(function (msg) {
-      alert("Data Saved: " + msg);
-    });
+    success: function (result) {
+      console.log(result['status']);
+    },
+    error: function (e) {
+      console.log(e);
+    }
+  });
 }

@@ -23,6 +23,7 @@ return array(
     'App\\Http\\Controllers\\Auth\\SocialController' => $baseDir . '/app/Http/Controllers/Auth/SocialController.php',
     'App\\Http\\Controllers\\Auth\\VerifyEmailController' => $baseDir . '/app/Http/Controllers/Auth/VerifyEmailController.php',
     'App\\Http\\Controllers\\Client\\BlogController' => $baseDir . '/app/Http/Controllers/Client/BlogController.php',
+    'App\\Http\\Controllers\\Client\\CartController' => $baseDir . '/app/Http/Controllers/Client/CartController.php',
     'App\\Http\\Controllers\\Client\\HomeController' => $baseDir . '/app/Http/Controllers/Client/HomeController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Http\\Kernel' => $baseDir . '/app/Http/Kernel.php',
