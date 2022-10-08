@@ -48,7 +48,6 @@
 
     <!-- Main Js File -->
     <script src="{{ asset('assets/client/js/script.js')}}"></script>
-    <script src="{{ asset('assets/client/js/common.js')}}"></script>
     <script src="{{ asset('assets/index.js') }}"></script>
     @yield('script')
 </body>

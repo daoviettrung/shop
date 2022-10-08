@@ -40,7 +40,7 @@
                                             <a href="#!"><i class="tf-ion-ios-heart"></i></a>
                                         </li>
                                         <li>
-                                            <a href="#!"><i class="tf-ion-android-cart"></i></a>
+                                            <a onclick="addToCart({{$pr->id}},{{ Auth::id()}});" href="#"><i class="tf-ion-android-cart"></i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -85,9 +85,10 @@
                 </div><!-- /.modal -->
                 @endforeach
 
-
             </div>
             {{ $product->links() }}
         </div>
     </section>
+    <script src="{{ asset('assets/client/js/common.js')}}"></script>
+
 @endsection
