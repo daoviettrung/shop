@@ -12,7 +12,6 @@ function addToCart(id, userId) {
     url: "add-cart",
     data: {
       'id': id,
-      'user_id': userId
     },
     success: function (result) {
       console.log(result['status']);
