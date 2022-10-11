@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index']);
 Route::get('categories/{slug}', [HomeController::class, 'searchByCategory']);
 Route::post('add-cart', [CartController::class, 'addToCart']);
+Route::get('detail-cart', [CartController::class, 'show']);
 Route::get('login-facebook/{social}', [SocialController::class, 'getInfor']);
 Route::get('check-login-facebook/{social}', [SocialController::class, 'checkInfor']);
 Route::prefix('blog')->group(function () {

@@ -14,7 +14,9 @@ function addToCart(id, userId) {
       'id': id,
     },
     success: function (result) {
-      console.log(result['status']);
+      if (result) {
+        alert('add cart successfully');
+      }
     },
     error: function (e) {
       console.log(e);
