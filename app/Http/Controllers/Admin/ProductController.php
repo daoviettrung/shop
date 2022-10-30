@@ -63,6 +63,7 @@ class ProductController extends Controller
         $product->number   = $request->number;
         $product->description = $request->description;
         if ($request->hasFile('image')) {
+            dd($request->image);
             $file = $request->file('image');
             $ext = $file->getClientOriginalExtension();
             $filename = time() . '.' . $ext;

@@ -82,7 +82,7 @@
                             <label for="image" class=" form-control-label">Image</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="file" id="image" name="image" class="form-control-file">
+                            <input type="file" id="image" name="image[]" class="form-control-file" multiple>
                         </div>
                     </div>
                 </div>

@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="product-content">
-                                <h4><a href="product-single.html">{{ $pr->name }}</a></h4>
+                                <h4><a href="detail-product/{{$pr->id}}">{{ $pr->name }}</a></h4>
                                 <p class="price">{{ $pr->price_sale }}.VND</p>
                             </div>
                         </div>
