@@ -9,25 +9,20 @@
 						<div class='carousel-outer'>
 							<!-- me art lab slider -->
 							<div class='carousel-inner '>
-								<div class='item active'>
-									<img src='images/shop/single-products/product-1.jpg' alt='' data-zoom-image="images/shop/single-products/product-1.jpg" />
-								</div>
-								<div class='item'>
-									<img src='images/shop/single-products/product-2.jpg' alt='' data-zoom-image="images/shop/single-products/product-2.jpg" />
-								</div>
-								
-								<div class='item'>
-									<img src='images/shop/single-products/product-3.jpg' alt='' data-zoom-image="images/shop/single-products/product-3.jpg" />
-								</div>
-								<div class='item'>
-									<img src='images/shop/single-products/product-4.jpg' alt='' data-zoom-image="images/shop/single-products/product-4.jpg" />
-								</div>
-								<div class='item'>
-									<img src='images/shop/single-products/product-5.jpg' alt='' data-zoom-image="images/shop/single-products/product-5.jpg" />
-								</div>
-								<div class='item'>
-									<img src='images/shop/single-products/product-6.jpg' alt='' data-zoom-image="images/shop/single-products/product-6.jpg" />
-								</div>
+								@php 
+                                    $images = explode(',', $product->image);
+								@endphp
+								@foreach($images as $key => $value)
+									@if($key == 0)
+										<div class='item active'>
+											<img src='{{ asset('assets/uploads/product/'. $value) }}' alt='' data-zoom-image="{{ asset('assets/uploads/product/'. $value) }}" />
+										</div>
+									@else
+										<div class='item'>
+											<img src='{{ asset('assets/uploads/product/'. $value) }}' alt='' data-zoom-image="{{ asset('assets/uploads/product/'. $value) }}" />
+										</div>
+									@endif
+								@endforeach
 								
 							</div>
 							
@@ -42,27 +37,17 @@
 						
 						<!-- thumb -->
 						<ol class='carousel-indicators mCustomScrollbar meartlab'>
-							<li data-target='#carousel-custom' data-slide-to='0' class='active'>
-								<img src='images/shop/single-products/product-1.jpg' alt='' />
-							</li>
-							<li data-target='#carousel-custom' data-slide-to='1'>
-								<img src='images/shop/single-products/product-2.jpg' alt='' />
-							</li>
-							<li data-target='#carousel-custom' data-slide-to='2'>
-								<img src='images/shop/single-products/product-3.jpg' alt='' />
-							</li>
-							<li data-target='#carousel-custom' data-slide-to='3'>
-								<img src='images/shop/single-products/product-4.jpg' alt='' />
-							</li>
-							<li data-target='#carousel-custom' data-slide-to='4'>
-								<img src='images/shop/single-products/product-5.jpg' alt='' />
-							</li>
-							<li data-target='#carousel-custom' data-slide-to='5'>
-								<img src='images/shop/single-products/product-6.jpg' alt='' />
-							</li>
-							<li data-target='#carousel-custom' data-slide-to='6'>
-								<img src='images/shop/single-products/product-7.jpg' alt='' />
-							</li>
+							@foreach($images as $key => $value)
+							@if($key == 0)
+							<li data-target='#carousel-custom' data-slide-to='{{$key}}' class='active'>
+									<img src='{{ asset('assets/uploads/product/'. $value) }}' alt='' data-zoom-image="{{ asset('assets/uploads/product/'. $value) }}" />
+								</li>
+							@else
+							<li data-target='#carousel-custom' data-slide-to='{{$key}}'>
+									<img src='{{ asset('assets/uploads/product/'. $value) }}' alt='' data-zoom-image="{{ asset('assets/uploads/product/'. $value) }}" />
+								</li>
+							@endif
+							@endforeach
 						</ol>
 					</div>
 				</div>

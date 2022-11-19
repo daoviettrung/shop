@@ -35,7 +35,7 @@
 					<button class="btn btn-secondary"><a class="auth" href="login">Đăng nhập</a></button>
 					<button class="btn btn-secondary"><a class="auth" href="register">Đăng ký</a></button>
 					@else
-					<a class="auth" href="#">{{Auth::user()->name}}</a>
+					<a class="auth" href="{{url('dashboard')}}">{{Auth::user()->name}}</a>
 					<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
 							@csrf
 						</form>

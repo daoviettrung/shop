@@ -27,7 +27,10 @@
                         <div class="product-item">
                             <div class="product-thumb">
                                 <span class="bage">Sale</span>
-                                <img class="img-responsive" src="{{ asset('assets/uploads/product/' . $pr->image) }}"
+                                @php
+                                    $image = explode(',', $pr->image)[0];
+                                @endphp
+                                <img class="img-responsive" src="{{ asset('assets/uploads/product/'. $image) }}"
                                     alt="product-img" />
                                 <div class="preview-meta">
                                     <ul>
