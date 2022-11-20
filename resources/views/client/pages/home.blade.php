@@ -14,6 +14,45 @@
             </div>
         @endforeach
     </div>
+    <section class="product-category section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="title text-center">
+                        <h2>Thương hiệu</h2>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="category-box">
+                        <a href="#!">
+                            <img src="{{ asset('assets/uploads/category/category-1.jpg')}}" alt="" />
+                            <div class="content">
+                                <h3>Đẹp</h3>
+                            </div>
+                        </a>	
+                    </div>
+                    <div class="category-box">
+                        <a href="#!">
+                            <img src="{{ asset('assets/uploads/category/category-2.jpg')}}" alt="" />
+                            <div class="content">
+                                <h3>Chất lượng</h3>
+                            </div>
+                        </a>	
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="category-box category-box-2">
+                        <a href="#!">
+                            <img src="{{ asset('assets/uploads/category/category-3.jpg')}}" alt="" />
+                            <div class="content">
+                                <h3>Uy tín</h3>
+                            </div>
+                        </a>	
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <section class="products section bg-gray">
         <div class="container">
             <div class="row">

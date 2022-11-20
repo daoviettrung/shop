@@ -85,6 +85,17 @@
                             <input type="file" id="image" name="image[]" class="form-control-file" multiple>
                         </div>
                     </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="size" class=" form-control-label">Size</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            @foreach(config('constants.size') as $value) 
+                                <label for="{{$value}}"> {{$value}}</label>
+                                <input type="checkbox" value="{{$value}}" name = "{{$value}}" class="mr-5">
+                            @endforeach
+                        </div>
+                    </div>
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary btn-sm">

@@ -33,7 +33,7 @@
                             <label for="price sale" class=" form-control-label">Price sale</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="number" id="price_sale" name="price_sale" class="form-control" required>
+                            <input type="number" id="price_sale" name="price_sale" class="form-control" value="{{ !empty($product->price_sale) ? $product->price_sale : '' }}" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -41,7 +41,7 @@
                             <label for="price" class=" form-control-label">Price</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="number" id="price" name="price" class="form-control" required>
+                            <input type="number" id="price" name="price" class="form-control" value="{{ !empty($product->price) ? $product->price : '' }}" required>
                         </div>
                     </div>
                     <div class="row form-group">
@@ -87,7 +87,23 @@
                             <label for="image" class=" form-control-label">Image</label>
                         </div>
                         <div class="col-12 col-md-9">
-                            <input type="file" id="image" name="image" class="form-control-file">
+                            <input type="file" id="image" name="image[]" class="form-control-file" multiple>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col col-md-3">
+                            <label for="size" class=" form-control-label">Size</label>
+                        </div>
+                        <div class="col-12 col-md-9">
+                            @foreach(config('constants.size') as $value) 
+                                @if(in_array($value, explode(',', $product->size)))
+                                    <label for="{{$value}}"> {{$value}}</label>
+                                    <input type="checkbox" value="{{$value}}" name = "{{$value}}" class="mr-5" checked>
+                                @else
+                                    <label for="{{$value}}"> {{$value}}</label>
+                                    <input type="checkbox" value="{{$value}}" name = "{{$value}}" class="mr-5">
+                                @endif
+                            @endforeach
                         </div>
                     </div>
                 </div>

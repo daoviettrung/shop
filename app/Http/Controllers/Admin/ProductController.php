@@ -73,6 +73,13 @@ class ProductController extends Controller
             }
             $product->image = implode(",",$nameImgs);
         }
+        $tempSize = [];
+        foreach(config('constants.size') as $size) {
+            if($request->has($size)){
+                $tempSize[] = $size;
+            }
+        }
+        $product->size = implode(",", $tempSize);
         $product->save();
         return redirect('product/create')->with('success', 'Added successfully');
     }
@@ -133,6 +140,12 @@ class ProductController extends Controller
             $file->move('assets/uploads/product', $filename);
             $product->image = $filename;
         }
+        foreach(config('constants.size') as $size) {
+            if($request->has($size)){
+                $tempSize[] = $size;
+            }
+        }
+        $product->size = implode(",", $tempSize);
         $product->update();
         return redirect('product')->with('success', 'Edit successfully');
     }

@@ -23,6 +23,7 @@ class CreateProductTable extends Migration
             $table->integer('cost');
             $table->integer('category');
             $table->integer('number');
+            $table->string('size')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });

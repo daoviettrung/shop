@@ -54,13 +54,12 @@
 			</div>
 			<div class="col-md-7">
 				<div class="single-product-details">
-					<h2>Eclipse Crossbody</h2>
-					<p class="product-price">$300</p>
+					<h2>{{$product->name}}</h2>
+					<p class="product-price">{{empty($product->price_sale) ? $product->price_sale : $product->price}}</p>
 					
 					<p class="product-description mt-20">
-						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum ipsum dicta quod, quia doloremque aut deserunt commodi quis. Totam a consequatur beatae nostrum, earum consequuntur? Eveniet consequatur ipsum dicta recusandae.
+						{{$product->description}}
 					</p>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, velit, sunt temporibus, nulla accusamus similique sapiente tempora, at atque cumque assumenda minus asperiores est esse sequi dolore magnam. Debitis, explicabo.</p>
 					<div class="color-swatches">
 						<span>color:</span>
 						<ul>
@@ -78,10 +77,9 @@
 					<div class="product-size">
 						<span>Size:</span>
 						<select class="form-control">
-							<option>S</option>
-							<option>M</option>
-							<option>L</option>
-							<option>XL</option>
+							@foreach(explode(',', $product->size) as $size)
+								<option>{{$size}}</option>
+							@endforeach
 						</select>
 					</div>
 					<div class="product-quantity">
@@ -93,7 +91,7 @@
 					<div class="product-category">
 						<span>Categories:</span>
 						<ul>
-							<li><a href="product-single.html">Products</a></li>
+							<li><a href="product-single.html">{{}}</a></li>
 							<li><a href="product-single.html">Soap</a></li>
 						</ul>
 					</div>
@@ -110,9 +108,7 @@
 					</ul>
 					<div class="tab-content patternbg">
 						<div id="details" class="tab-pane fade active in">
-							<h4>Product Description</h4>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut per spici</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis delectus quidem repudiandae veniam distinctio repellendus magni pariatur molestiae asperiores animi, eos quod iusto hic doloremque iste a, nisi iure at unde molestias enim fugit, nulla voluptatibus. Deserunt voluptate tempora aut illum harum, deleniti laborum animi neque, praesentium explicabo, debitis ipsa?</p>
+							{{$product->description}}
 						</div>
 						<div id="reviews" class="tab-pane fade">
 							<div class="post-comments">

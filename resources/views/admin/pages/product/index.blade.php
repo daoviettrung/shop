@@ -26,13 +26,11 @@
                         <tr>
                             <th>Stt</th>
                             <th>Name</th>
-                            <th>Image</th>
                             <th>The remaining amount</th>
                             <th>Price sale </th>
                             <th>Price</th>
                             <th>Cost </th>
                             <th>Category </th>
-                            <th>Description</th>
                             <th>Created</th>
                         </tr>
                     </thead>
@@ -44,10 +42,6 @@
                                 </td>
                                 <td>
                                     {{ $pr->name }}
-                                </td>
-                                <td>
-                                    <img src="{{ asset('assets/uploads/product/' . $pr->image) }}" alt="Image here"
-                                        class="image-custom">
                                 </td>
                                 <td>
                                     {{ $pr->number }}
@@ -63,9 +57,6 @@
                                 </td>
                                 <td>
                                     {{ $pr->category}}
-                                </td>
-                                <td>
-                                    {{ $pr->description }}
                                 </td>
                                 <td>
                                     {{ $pr->created_at }}
