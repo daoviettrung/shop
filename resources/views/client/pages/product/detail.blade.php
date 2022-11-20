@@ -91,11 +91,10 @@
 					<div class="product-category">
 						<span>Categories:</span>
 						<ul>
-							<li><a href="product-single.html">{{}}</a></li>
-							<li><a href="product-single.html">Soap</a></li>
+							<li><a href="product-single.html">{{$product->categoryRelation->name}}</a></li>
 						</ul>
 					</div>
-					<a href="cart.html" class="btn btn-main mt-20">Add To Cart</a>
+					<button class="btn btn-main mt-20" onclick="addToCart({{$product->id}}, {{Auth::id()}});">Add To Cart</button>
 				</div>
 			</div>
 		</div>
@@ -197,4 +196,5 @@
 		</div>
 	</div>
 </section>
+<script src="{{ asset('assets/client/js/common.js') }}"></script>
 @endsection

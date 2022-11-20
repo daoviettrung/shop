@@ -22,8 +22,8 @@ class Product extends Model
         'description',
     ];
 
-    public function category()
+    public function categoryRelation()
     {
-        return $this->belongsTo('App\Models\Category', 'category', 'id');
+        return $this->belongsTo('App\Models\Category', 'category');
     }
 }
