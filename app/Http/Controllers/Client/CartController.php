@@ -21,7 +21,7 @@ class CartController extends Controller
             'description' => $getProduct->description,
             'price' => $getProduct->price,
         ];
-        $request->session()->push('cart.' . Auth::id() . $getProduct->id, $data);
+        $request->session()->push('cart.' . Auth::id(), $data);
         return response()->json('true');
     }
 
