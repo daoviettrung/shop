@@ -130,15 +130,22 @@ class ProductController extends Controller
         $product->number   = $request->number;
         $product->description = $request->description;
         if($request->hasFile('image')){
-            $path = 'assets/uploads/product/' . $product->image;
-            if(File::exists($path)){
-                File::delete($path);
+            $images = explode(',', $product->images);
+            foreach($images as $image){
+                $path = 'assets/uploads/product/' . $image;
+                if(File::exists($path)){
+                    File::delete($path);
+                }
             }
             $file = $request->file('image');
-            $ext = $file->getClientOriginalExtension();
-            $filename = time() . '.' . $ext;
-            $file->move('assets/uploads/product', $filename);
-            $product->image = $filename;
+            $nameImgs = [];
+            foreach ($file as $key => $value) {
+                $ext = $value->getClientOriginalExtension(); 
+                $filename = time() .'-' . $key . '.' . $ext;
+                $value->move('assets/uploads/product', $filename);
+                $nameImgs[] = $filename;
+            }
+            $product->image = implode(",",$nameImgs);
         }
         foreach(config('constants.size') as $size) {
             if($request->has($size)){

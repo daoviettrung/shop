@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Client;
 
+use App\Models\Category;
+
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -10,7 +13,6 @@ use Illuminate\Support\Facades\DB;
 class CartController extends Controller
 {
     public function addToCart(Request $request){
-        $request->session()->flush();
         $getProduct = DB::table('product')->find($request->id);
         $data = [
             'id' => $getProduct->id,
@@ -20,6 +22,7 @@ class CartController extends Controller
             'category' => $getProduct->category,
             'description' => $getProduct->description,
             'price' => $getProduct->price,
+            'image' => $getProduct->image,
         ];
         $request->session()->push('cart.' . Auth::id(), $data);
         return response()->json('true');
@@ -27,7 +30,12 @@ class CartController extends Controller
 
     public function show(Request $request){
         $getData = $request->session()->all();
-        $getDataCart = $getData['cart'];
-        dd($getDataCart);
+        $category = Category::all();
+        $dataCartUser = [];
+        if(!empty($getData['cart'])){
+            $getDataCart = $getData['cart'];
+            $dataCartUser = $getDataCart[Auth::id()];
+        }
+        return view('client.pages.cart.index', compact('category', 'dataCartUser'));
     }
 }
