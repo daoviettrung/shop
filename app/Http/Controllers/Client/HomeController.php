@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Http\Controllers\Client\SharedController;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -37,5 +38,13 @@ class HomeController extends Controller
         ->simplePaginate(9);
         $this->result['products'] = $product;
         return view('client.pages.home', ['data' => $this->result]);
+    }
+
+    public function testEmail() {
+        $data['name'] = 'Hello Trung dep trai';
+        Mail::send('client.pages.email.verify', $data, function ($message) {
+            $message->subject('Gui de test');
+            $message->to('viettrung662000@gmail.com', 'Trung dep trai');
+        });
     }
 }
