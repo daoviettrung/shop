@@ -10,7 +10,7 @@
 							<!-- me art lab slider -->
 							<div class='carousel-inner '>
 								@php 
-                                    $images = explode(',', $product->image);
+                                    $images = explode(',', $data['product']->image);
 								@endphp
 								@foreach($images as $key => $value)
 									@if($key == 0)
@@ -54,11 +54,11 @@
 			</div>
 			<div class="col-md-7">
 				<div class="single-product-details">
-					<h2>{{$product->name}}</h2>
-					<p class="product-price">{{empty($product->price_sale) ? $product->price_sale : $product->price}}</p>
+					<h2>{{$data['product']->name}}</h2>
+					<p class="product-price">{{empty($data['product']->price_sale) ? $data['product']->price_sale : $data['product']->price}}</p>
 					
 					<p class="product-description mt-20">
-						{{$product->description}}
+						{{$data['product']->description}}
 					</p>
 					<div class="color-swatches">
 						<span>color:</span>
@@ -77,7 +77,7 @@
 					<div class="product-size">
 						<span>Size:</span>
 						<select class="form-control">
-							@foreach(explode(',', $product->size) as $size)
+							@foreach(explode(',', $data['product']->size) as $size)
 								<option>{{$size}}</option>
 							@endforeach
 						</select>
@@ -91,10 +91,10 @@
 					<div class="product-category">
 						<span>Categories:</span>
 						<ul>
-							<li><a href="product-single.html">{{$product->categoryRelation->name}}</a></li>
+							<li><a href="product-single.html">{{$data['product']->categoryRelation->name}}</a></li>
 						</ul>
 					</div>
-					<button class="btn btn-main mt-20" onclick="addToCart({{$product->id}}, {{Auth::id()}});">Add To Cart</button>
+					<button class="btn btn-main mt-20" onclick="addToCart({{$data['product']->id}}, {{Auth::id()}});">Add To Cart</button>
 				</div>
 			</div>
 		</div>
@@ -107,7 +107,7 @@
 					</ul>
 					<div class="tab-content patternbg">
 						<div id="details" class="tab-pane fade active in">
-							{{$product->description}}
+							{{$data['product']->description}}
 						</div>
 						<div id="reviews" class="tab-pane fade">
 							<div class="post-comments">

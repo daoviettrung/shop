@@ -9,26 +9,33 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
-
+use App\Http\Controllers\Client\SharedController;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
+    private $result;
+    public function __construct(SharedController $sharedController) {
+        if(empty(Cache::get('cate_menu'))){
+            Cache::put('cate_menu', $sharedController->getDataMenu());
+        }
+        $this->result = Cache::get('cate_menu');
+    }
+
     public function index(){
-        $slide = DB::table('slide')->skip(0)->take(5)->get();
-        $category = Category::all();
         $product = DB::table('product')->simplePaginate(9);
-        return view('client.pages.home', compact('slide', 'category', 'product'));
+        $this->result['products'] = $product;
+        return view('client.pages.home', ['data' => $this->result]);
     }
 
     public function searchByCategory($slug){
-        $slide = DB::table('slide')->skip(0)->take(5)->get();
-        $category = Category::all();
         $idCate = DB::table('category')
         ->where('slug', 'like', '%'.$slug.'%')
         ->pluck('id');
         $product = DB::table('product')
         ->where('category', $idCate)
         ->simplePaginate(9);
-        return view('client.pages.home', compact('slide', 'category', 'product'));
+        $this->result['products'] = $product;
+        return view('client.pages.home', ['data' => $this->result]);
     }
 }

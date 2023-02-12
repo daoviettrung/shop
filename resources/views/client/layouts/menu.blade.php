@@ -31,7 +31,7 @@
 								<!-- Basic -->
 								<div class="col-lg-12 col-md-12 mb-sm-6">
 									<ul>
-                                        @foreach($category as $cate)
+                                        @foreach($data['category'] as $cate)
 										<li><a href="{{url('categories/'.urlencode($cate->slug))}}">{{$cate->name}}</a></li>
                                         @endforeach
 									</ul>

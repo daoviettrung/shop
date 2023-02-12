@@ -17,7 +17,7 @@
                       </tr>
                     </thead>
                     <tbody>
-					@foreach($dataCartUser as $key => $value)
+					@foreach($data['data_cart'] as $key => $value)
                       <tr class="">
                         <td class="">
                           <div class="product-info">

@@ -9,9 +9,20 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Client\SharedController;
+use Illuminate\Support\Facades\Cache;
 
 class CartController extends Controller
 {
+    private $result;
+
+    public function __construct(SharedController $sharedController) {
+        if(empty(Cache::get('cate_menu'))){
+            Cache::put('cate_menu', $sharedController->getDataMenu());
+        }
+        $this->result = Cache::get('cate_menu');
+    }
+
     public function addToCart(Request $request){
         $getProduct = DB::table('product')->find($request->id);
         $data = [
@@ -30,12 +41,12 @@ class CartController extends Controller
 
     public function show(Request $request){
         $getData = $request->session()->all();
-        $category = Category::all();
         $dataCartUser = [];
         if(!empty($getData['cart'])){
             $getDataCart = $getData['cart'];
             $dataCartUser = $getDataCart[Auth::id()];
         }
-        return view('client.pages.cart.index', compact('category', 'dataCartUser'));
+        $this->result['data_cart'] = $dataCartUser;
+        return view('client.pages.cart.index', ['data' =>$this->result]);
     }
 }

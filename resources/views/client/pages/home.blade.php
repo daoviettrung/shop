@@ -1,7 +1,7 @@
 @extends('client.index')
 @section('content')
     <div class="hero-slider">
-        @foreach ($slide as $sl)
+        @foreach ($data['slide'] as $sl)
             <div class="slider-item th-fullpage hero-area"
                 style="background-image: url({{ asset('assets/uploads/slide/' . $sl->image) }});">
                 <div class="container">
@@ -19,7 +19,6 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="title text-center">
-                        <h2>Thương hiệu</h2>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -27,7 +26,6 @@
                         <a href="#!">
                             <img src="{{ asset('assets/uploads/category/category-1.jpg')}}" alt="" />
                             <div class="content">
-                                <h3>Đẹp</h3>
                             </div>
                         </a>	
                     </div>
@@ -35,7 +33,6 @@
                         <a href="#!">
                             <img src="{{ asset('assets/uploads/category/category-2.jpg')}}" alt="" />
                             <div class="content">
-                                <h3>Chất lượng</h3>
                             </div>
                         </a>	
                     </div>
@@ -45,7 +42,6 @@
                         <a href="#!">
                             <img src="{{ asset('assets/uploads/category/category-3.jpg')}}" alt="" />
                             <div class="content">
-                                <h3>Uy tín</h3>
                             </div>
                         </a>	
                     </div>
@@ -61,7 +57,7 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($product as $pr)
+                @foreach ($data['products'] as $pr)
                     <div class="col-md-4">
                         <div class="product-item">
                             <div class="product-thumb">
@@ -126,7 +122,7 @@
                 @endforeach
 
             </div>
-            {{ $product->links() }}
+            {{ $data['products']->links() }}
         </div>
     </section>
 @endsection
