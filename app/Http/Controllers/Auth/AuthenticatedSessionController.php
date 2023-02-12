@@ -32,8 +32,8 @@ class AuthenticatedSessionController extends Controller
     {
         $user = DB::table('users')
         ->where('email', $request->email)->first();
-        if(empty($user)){ /* check email verify */
-
+        if(empty($user->email_verified_at) && $user->level != 0){ /* check email verify */
+            return view('auth.login')->withErrors('Cần xác thực email trước khi đăng nhập');
         }
         else{
             $request->authenticate();

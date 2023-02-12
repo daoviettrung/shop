@@ -30,7 +30,7 @@
                         </td>
                         <td class="">{{$value['price']}}</td>
                         <td class="">
-                          <a class="product-remove" href="#!">Remove</a>
+                          <a class="product-remove" href="{{url('remove-item-cart/' . $value['id'])}}">Remove</a>
                         </td>
                       </tr>
                       @endforeach

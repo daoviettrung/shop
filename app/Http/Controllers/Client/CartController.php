@@ -35,18 +35,44 @@ class CartController extends Controller
             'price' => $getProduct->price,
             'image' => $getProduct->image,
         ];
-        $request->session()->push('cart.' . Auth::id(), $data);
+        $dataSession = empty($request->session()->all()['cart'][Auth::id()]) ? [] : $request->session()->all()['cart'][Auth::id()];
+        if(empty($dataSession)){
+            $request->session()->push('cart.' . Auth::id(), $data);
+            return response()->json('true');
+        }
+        $checkDataAlreadyExist = $this->checkDataSessionAlreadyExist($dataSession, $request->id);
+        if($checkDataAlreadyExist){
+            $request->session()->push('cart.' . Auth::id(), $data);
+        }
         return response()->json('true');
     }
 
     public function show(Request $request){
-        $getData = $request->session()->all();
-        $dataCartUser = [];
-        if(!empty($getData['cart'])){
-            $getDataCart = $getData['cart'];
-            $dataCartUser = $getDataCart[Auth::id()];
+        $this->result['data_cart'] = [];
+        if(!empty($request->session()->all()['cart'][Auth::id()])){
+            $this->result['data_cart'] = $request->session()->all()['cart'][Auth::id()];
         }
-        $this->result['data_cart'] = $dataCartUser;
         return view('client.pages.cart.index', ['data' =>$this->result]);
+    }
+
+    public function removeItemCart(Request $request, $id){
+        $data = $request->session()->all()['cart'][Auth::id()];
+        $request->session()->forget('cart.' . Auth::id());
+        foreach ($data as $key => $value){
+            if($value['id'] != $id){
+                $request->session()->push('cart.' . Auth::id(), $value);
+            }
+        }
+        return redirect('detail-cart');
+    }
+
+    function checkDataSessionAlreadyExist($data, $id){
+        dd($data);
+        foreach($data as $value){
+            if($value['id'] == $id){
+                return false;
+            }
+        }
+        return true;
     }
 }

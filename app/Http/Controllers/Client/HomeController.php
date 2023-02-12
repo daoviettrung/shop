@@ -12,6 +12,8 @@ use App\Models\Product;
 use App\Http\Controllers\Client\SharedController;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Auth;
+
 
 class HomeController extends Controller
 {
@@ -24,6 +26,13 @@ class HomeController extends Controller
     }
 
     public function index(){
+        if(!empty(Auth::user()->id)){
+            $user = DB::table('users')
+            ->where('id', Auth::user()->id)->first();
+            if(empty($user->email_verified_at) && $user->level != 0){ /* check email verify */
+                return view('auth.login')->withErrors('Cần xác thực email trước khi đăng nhập');
+            }
+        }
         $product = DB::table('product')->simplePaginate(9);
         $this->result['products'] = $product;
         return view('client.pages.home', ['data' => $this->result]);
