@@ -19,7 +19,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8">
-                    @foreach ($blog as $b)
+                    @foreach ($data['blog'] as $b)
                         <div class="post">
                             <div class="post-media post-thumb">
                                 <a href="{{url('blog/'. $b->slug)}}">
@@ -47,7 +47,7 @@
                         <!-- Widget Latest Posts -->
                         <div class="widget widget-latest-post">
                             <h4 class="widget-title">Latest Posts</h4>
-                            @foreach ($blogRight as $b)
+                            @foreach ($data['blog_right'] as $b)
                                 <div class="media">
                                     <a class="pull-left" href="#!">
                                         <img class="media-object" src="{{ asset('assets/uploads/post/' . $b->image) }}"

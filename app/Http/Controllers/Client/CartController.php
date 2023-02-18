@@ -67,7 +67,6 @@ class CartController extends Controller
     }
 
     function checkDataSessionAlreadyExist($data, $id){
-        dd($data);
         foreach($data as $value){
             if($value['id'] == $id){
                 return false;

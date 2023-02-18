@@ -25,22 +25,22 @@
 					<div class="post-thumb">
 						<img class="img-responsive" src="images/blog/blog-post-1.jpg" alt="">
 					</div>
-					<h2 class="post-title">{{$blog->name}}</h2>
+					<h2 class="post-title">{{$data['blog']->name}}</h2>
 					<div class="post-meta">
 						<ul>
 							<li>
-								<i class="tf-ion-ios-calendar"></i> View: {{$blog->view}}
+								<i class="tf-ion-ios-calendar"></i> View: {{$data['blog']->view}}
 							</li>
 						</ul>
 					</div>
 					<div class="post-content post-excerpt">
-                        {!! nl2br($blog->content) !!}
+                        {!! nl2br($data['blog']->content) !!}
 				    </div>
 				    <div class="post-social-share">
 				        <h3 class="post-sub-heading">Share this post</h3>
 				        <div class="social-media-icons">
 				        	<ul>
-								<li><a class="facebook" href="https://www.facebook.com/sharer.php?u={{URL::current();}}"><i class="tf-ion-social-facebook"></i></a></li>
+								<li><a class="facebook" href="https://www.facebook.com/sharer.php?u={{URL::current()}}"><i class="tf-ion-social-facebook"></i></a></li>
 							</ul>
 				        </div>
 				    </div>
