@@ -30,20 +30,10 @@
     <script src="{{ asset('assets/client/plugins/bootstrap/js/bootstrap.min.js') }}"></script>
     <!-- Bootstrap Touchpin -->
     <script src="{{ asset('assets/client/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js') }}"></script>
-    <!-- Instagram Feed Js -->
-    <script src="{{ asset('assets/client/plugins/instafeed/instafeed.min.js') }}"></script>
-    <!-- Video Lightbox Plugin -->
-    <script src="{{ asset('assets/client/plugins/ekko-lightbox/dist/ekko-lightbox.min.js') }}"></script>
-    <!-- Count Down Js -->
-    <script src="{{ asset('assets/client/plugins/syo-timer/build/jquery.syotimer.min.js') }}"></script>
 
     <!-- slick Carousel -->
     <script src="{{ asset('assets/client/plugins/slick/slick.min.js') }}"></script>
     <script src="{{ asset('assets/client/plugins/slick/slick-animation.min.js') }}"></script>
-
-    <!-- Google Mapl -->
-    <script type="text/javascript" src="{{ asset('assets/client/plugins/google-map/gmap.js') }}"></script>
-
     <!-- Main Js File -->
     <script src="{{ asset('assets/client/js/script.js') }}"></script>
     <script src="{{ asset('assets/index.js') }}"></script>

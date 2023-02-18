@@ -12,6 +12,7 @@ use App\Http\Controllers\Client\CartController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
+use \App\Http\Controllers\Client\BillController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ use Illuminate\Http\Request;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('checkout', [BillController::class, 'checkout']);
 Route::get('/', [HomeController::class, 'index']);
 Route::get('categories/{slug}', [HomeController::class, 'searchByCategory']);
 Route::post('add-cart', [CartController::class, 'addToCart']);

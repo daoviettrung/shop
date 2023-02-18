@@ -36,7 +36,7 @@
                       @endforeach
                     </tbody>
                   </table>
-                  <a href="checkout.html" class="btn btn-main pull-right">Checkout</a>
+                  <a href="checkout" class="btn btn-main pull-right">Checkout</a>
                 </form>
               </div>
             </div>
