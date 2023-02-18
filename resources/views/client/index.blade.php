@@ -44,5 +44,5 @@
             }
         });
     </script>
-    @yield('script' )
+    @yield('script')
 </body>
