@@ -21,11 +21,56 @@
     userFeed.run();
   }
 
+  setTimeout(function () {
+    $('.instagram-slider').slick({
+      dots: false,
+      speed: 300,
+      // autoplay: true,
+      arrows: false,
+      slidesToShow: 6,
+      slidesToScroll: 1,
+      responsive: [{
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 3
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 2
+          }
+        }
+      ]
+    });
+  }, 1500);
+
 
   // e-commerce touchspin
   $('input[name=\'product-quantity\']').TouchSpin();
 
 
+  // Video Lightbox
+  $(document).on('click', '[data-toggle="lightbox"]', function (event) {
+    event.preventDefault();
+    $(this).ekkoLightbox();
+  });
+
+
+  // Count Down JS
+  $('#simple-timer').syotimer({
+    year: 2022,
+    month: 5,
+    day: 9,
+    hour: 20,
+    minute: 30
+  });
 
   //Hero Slider
   $('.hero-slider').slick({

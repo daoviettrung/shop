@@ -10,5 +10,7 @@ return [
         'xxl' => 'xxl',
         'xxxl' => 'xxxl',
         'xxxlx' => 'xxxxl'
-    ]
+    ],
+
+    'city' => 'https://provinces.open-api.vn/api/?depth=3'
 ];

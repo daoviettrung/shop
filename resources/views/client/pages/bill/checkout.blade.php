@@ -129,6 +129,4 @@
             </div>
         </div>
     </div>
-    <script src="{{ asset('assets/client/js/common.js') }}"></script>
-    <script src="{{ asset('assets/client/js/client-bill.js') }}"></script>
 @endsection
