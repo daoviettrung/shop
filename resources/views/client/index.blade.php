@@ -15,6 +15,7 @@
     <link href="{{ asset('assets/client/plugins/slick/slick.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('assets/client/plugins/slick/slick-theme.css') }}" rel="stylesheet" media="all">
     <link href="{{ asset('assets/client/css/style.css') }}" rel="stylesheet" media="all">
+    <link href="{{ asset('assets/client/css/custom.css') }}" rel="stylesheet">
     @yield('style')
 </head>
 

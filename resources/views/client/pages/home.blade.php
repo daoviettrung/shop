@@ -58,14 +58,15 @@
             </div>
             <div class="row">
                 @foreach ($data['products'] as $pr)
+                    @php
+                        $image = explode(',', $pr->image);
+                    @endphp
                     <div class="col-md-4">
                         <div class="product-item">
                             <div class="product-thumb">
                                 <span class="bage">Sale</span>
-                                @php
-                                    $image = explode(',', $pr->image)[0];
-                                @endphp
-                                <img class="img-responsive" src="{{ asset('assets/uploads/product/'. $image) }}"
+
+                                <img class="img-responsive" src="{{ asset('assets/uploads/product/'. $image[0])}}"
                                     alt="product-img" />
                                 <div class="preview-meta">
                                     <ul>
@@ -98,7 +99,7 @@
                                         <div class="col-md-8 col-sm-6 col-xs-12">
                                             <div class="modal-image">
                                                 <img class="img-responsive"
-                                                    src="{{ asset('assets/uploads/product/' . $pr->image) }}"
+                                                    src="{{ asset('assets/uploads/product/' . $image[0]) }}"
                                                     alt="product-img" />
                                             </div>
                                         </div>
