@@ -23,27 +23,34 @@
                         <div class="block billing-details">
                             <h4 class="widget-title">Billing Details</h4>
                             <form class="checkout-form">
-                                <div class="form-group">
-                                    <label for="full_name">Full Name</label>
-                                    <input type="text" class="form-control" id="full_name" placeholder="">
+                                <div class="checkout-country-code clearfix">
+                                    <div class="form-group">
+                                        <label for="full_name">Full Name</label>
+                                        <input type="text" class="form-control" id="full_name" placeholder="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_phone">Number phone</label>
+                                        <input type="number" class="form-control" id="user_phone" placeholder="">
+                                    </div>
                                 </div>
+                                <div class="checkout-country-code clearfix">
+                                    <div class="form-group" >
+                                        <label for="user_city">City</label>
+                                        <select class="form-control" id="user_city" name="city">
+                                            <option></option>
+                                            <option>sddds</option>
+                                            <option>ddsd</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="district">District</label>
+                                        <select class="form-control" id="district" name="district" value=""></select>
+                                    </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="user_address">Address</label>
                                     <input type="text" class="form-control" id="user_address" placeholder="">
-                                </div>
-                                <div class="checkout-country-code clearfix">
-                                    <div class="form-group">
-                                        <label for="user_post_code">Zip Code</label>
-                                        <input type="text" class="form-control" id="user_post_code" name="zipcode" value="">
-                                    </div>
-                                    <div class="form-group" >
-                                        <label for="user_city">City</label>
-                                        <input type="text" class="form-control" id="user_city" name="city" value="">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="user_country">Country</label>
-                                    <input type="text" class="form-control" id="user_country" placeholder="">
                                 </div>
                             </form>
                         </div>
@@ -129,4 +136,7 @@
             </div>
         </div>
     </div>
+    @section('script')
+        <script src="{{ asset('assets/client/js/client-bill.js') }}"></script>
+    @endsection
 @endsection
