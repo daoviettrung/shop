@@ -36,10 +36,11 @@
                                 <div class="checkout-country-code clearfix">
                                     <div class="form-group" >
                                         <label for="user_city">City</label>
-                                        <select class="form-control" id="user_city" name="city">
+                                        <select class="form-control" id="user_city" name="city" onchange="changeCity()">
                                             <option></option>
-                                            <option>sddds</option>
-                                            <option>ddsd</option>
+                                            @foreach($data['city'] as $value)
+                                                <option value="{{$value->code}}">{{$value->name}}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
@@ -137,6 +138,6 @@
         </div>
     </div>
     @section('script')
-        <script src="{{ asset('assets/client/js/client-bill.js') }}"></script>
+        <script src="{{ asset('assets/client/js/client-bill.js?v='.time()) }}"></script>
     @endsection
 @endsection

@@ -24,7 +24,11 @@ use \App\Http\Controllers\Client\BillController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('seed-data-city', [BillController::class, 'seedDataCity']);
+
+
 Route::get('checkout', [BillController::class, 'checkout']);
+Route::post('get-districts-by-city', [BillController::class, 'getDistrictsByCity']);
 Route::get('/', [HomeController::class, 'index']);
 Route::get('categories/{slug}', [HomeController::class, 'searchByCategory']);
 Route::post('add-cart', [CartController::class, 'addToCart']);
@@ -48,20 +52,6 @@ Route::resource('post', PostController::class)->middleware(['auth']);
 
 
 Route::get('test-email', [HomeController::class, 'testEmail']);
-// verify email khi đăng ký
-Route::get('/email/verify', function () {
-    return view('auth.verify-email');
-})->middleware('auth')->name('verification.notice');
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
-    return redirect('/home');
-})->middleware(['auth', 'signed'])->name('verification.verify');
- 
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
-    return back()->with('message', 'Verification link sent!');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-// end verify email khi đăng ký
 
 
 require __DIR__.'/auth.php';

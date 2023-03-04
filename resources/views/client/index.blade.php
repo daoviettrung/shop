@@ -37,7 +37,6 @@
     <script src="{{ asset('assets/client/plugins/ekko-lightbox/dist/ekko-lightbox.min.js') }}"></script>
     <!-- Count Down Js -->
     <script src="{{ asset('assets/client/plugins/syo-timer/build/jquery.syotimer.min.js') }}"></script>
-ành
     <!-- slick Carousel -->
     <script src="{{ asset('assets/client/plugins/slick/slick.min.js') }}"></script>
     <script src="{{ asset('assets/client/plugins/slick/slick-animation.min.js') }}"></script>
