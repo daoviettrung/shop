@@ -18,6 +18,13 @@ function changeCity(){
         },
         dataType: "json",
         success: function (result) {
+            $('#district').find('option').remove().end();
+            result.forEach((element) => {
+                $('#district').append($('<option>', {
+                    value: element.id,
+                    text : element.name
+                }));
+            });
         },
         error: function (e) {
             console.log(e);

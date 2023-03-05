@@ -39,7 +39,7 @@
                                         <select class="form-control" id="user_city" name="city" onchange="changeCity()">
                                             <option></option>
                                             @foreach($data['city'] as $value)
-                                                <option value="{{$value->code}}">{{$value->name}}</option>
+                                                <option value="{{$value->id}}">{{$value->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
