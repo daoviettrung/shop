@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
 use App\Models\City;
@@ -23,6 +24,7 @@ class BillController extends Controller
     public function checkout(Request $request){
         $city = City::all();
         $this->result['city'] = $city;
+        $this->result['cart'] = $request->session()->all()['cart'][Auth::id()];
         return view('client.pages.bill.checkout', ['data' => $this->result]);
     }
 

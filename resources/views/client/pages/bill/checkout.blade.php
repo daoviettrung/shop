@@ -85,16 +85,21 @@
                         <div class="product-checkout-details">
                             <div class="block">
                                 <h4 class="widget-title">Order Summary</h4>
-                                <div class="media product-card">
-                                    <a class="pull-left" href="product-single.html">
-                                        <img class="media-object" src="" alt="Image" />
-                                    </a>
-                                    <div class="media-body">
-                                        <h4 class="media-heading"><a href="product-single.html">Ambassador Heritage 1921</a></h4>
-                                        <p class="price">1 x $249</p>
-                                        <span class="remove" >Remove</span>
+                                @foreach($data['cart'] as $value)
+                                    @php
+                                        $images = explode(',', $value['image']);
+                                    @endphp
+                                    <div class="media product-card">
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object" src="{{ asset('assets/uploads/product/'. $images[0])}}" alt="Image" />
+                                        </a>
+                                        <div class="media-body">
+                                            <h4 class="media-heading"><a href="detail-product/{{$value['id']}}">{{$value['name']}}</a></h4>
+                                            <p class="price">1 x $249</p>
+                                            <span class="remove" >Remove</span>
+                                        </div>
                                     </div>
-                                </div>
+                                @endforeach
                                 <div class="discount-code">
                                     <p>Have a discount ? <a data-toggle="modal" data-target="#coupon-modal" href="#!">enter it here</a></p>
                                 </div>
