@@ -76,16 +76,16 @@
 					</div>
 					<div class="product-size">
 						<span>Size:</span>
-						<select class="form-control">
+						<select id="size-product" class="form-control">
 							@foreach(explode(',', $data['product']->size) as $size)
-								<option>{{$size}}</option>
+								<option value="{{$size}}">{{$size}}</option>
 							@endforeach
 						</select>
 					</div>
 					<div class="product-quantity">
 						<span>Quantity:</span>
 						<div class="product-quantity-slider">
-							<input id="product-quantity" type="text" value="0" name="product-quantity">
+							<input id="product-quantity" type="number" value="1" name="product-quantity">
 						</div>
 					</div>
 					<div class="product-category">
@@ -196,5 +196,7 @@
 		</div>
 	</div>
 </section>
-<script src="{{ asset('assets/client/js/common.js') }}"></script>
+@endsection
+@section('script')
+	<script src="{{ asset('assets/client/js/common.js?v='.time()) }}"></script>
 @endsection

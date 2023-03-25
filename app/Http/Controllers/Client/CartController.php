@@ -34,15 +34,20 @@ class CartController extends Controller
             'description' => $getProduct->description,
             'price' => $getProduct->price,
             'image' => $getProduct->image,
+            'size'=> $request->size,
+            'quantity' => $request->quantity
         ];
         $dataSession = empty($request->session()->all()['cart'][Auth::id()]) ? [] : $request->session()->all()['cart'][Auth::id()];
         if(empty($dataSession)){
             $request->session()->push('cart.' . Auth::id(), $data);
             return response()->json('true');
         }
-        $checkDataAlreadyExist = $this->checkDataSessionAlreadyExist($dataSession, $request->id);
-        if($checkDataAlreadyExist){
-            $request->session()->push('cart.' . Auth::id(), $data);
+        else{
+            $checkDataAlreadyExist = $this->checkProductAlreadyExistInCart($dataSession, $request->id, $request->size);
+            $checkAndUpdateQuantity = $this->checkQuantity($dataSession, $request->id, $request->quantity);
+            if($checkDataAlreadyExist){
+                $request->session()->push('cart.' . Auth::id(), $data);
+            }
         }
         return response()->json('true');
     }
@@ -55,20 +60,29 @@ class CartController extends Controller
         return view('client.pages.cart.index', ['data' =>$this->result]);
     }
 
-    public function removeItemCart(Request $request, $id){
+    public function removeItemCart(Request $request, $id, $size){
         $data = $request->session()->all()['cart'][Auth::id()];
         $request->session()->forget('cart.' . Auth::id());
         foreach ($data as $key => $value){
-            if($value['id'] != $id){
+            if(($value['id']) != $id || ($value['id'] == $id && $value['size'] != $size)){
                 $request->session()->push('cart.' . Auth::id(), $value);
             }
         }
         return redirect('detail-cart');
     }
 
-    function checkDataSessionAlreadyExist($data, $id){
-        foreach($data as $value){
-            if($value['id'] == $id){
+    public function checkProductAlreadyExistInCart($dataSession, $id, $size){
+        foreach($dataSession as $value){
+            if($value['id'] == $id && $value['size'] == $size){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public function checkQuantity($dataSession, $id, $quantity){
+        foreach($dataSession as $value){
+            if($value['id'] == $id && $value['quantity'] != $quantity){
                 return false;
             }
         }

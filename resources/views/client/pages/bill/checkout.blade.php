@@ -87,6 +87,7 @@
                                 <h4 class="widget-title">Order Summary</h4>
                                 @foreach($data['cart'] as $value)
                                     @php
+                                        $price = (!empty($value['price_sale'])) ? $value['price_sale'] : $value['price'];
                                         $images = explode(',', $value['image']);
                                     @endphp
                                     <div class="media product-card">
@@ -95,8 +96,8 @@
                                         </a>
                                         <div class="media-body">
                                             <h4 class="media-heading"><a href="detail-product/{{$value['id']}}">{{$value['name']}}</a></h4>
-                                            <p class="price">1 x $249</p>
-                                            <span class="remove" >Remove</span>
+                                            <p class="price">{{$value['quantity']}} x {{number_format($price)}}</p>
+                                            <span class="remove" >Size: {{$value['size']}}</span>
                                         </div>
                                     </div>
                                 @endforeach
@@ -106,7 +107,7 @@
                                 <ul class="summary-prices">
                                     <li>
                                         <span>Subtotal:</span>
-                                        <span class="price">$190</span>
+                                        <span class="price">{{$data['total_price']}}</span>
                                     </li>
                                     <li>
                                         <span>Shipping:</span>
@@ -115,7 +116,7 @@
                                 </ul>
                                 <div class="summary-total">
                                     <span>Total</span>
-                                    <span>$250</span>
+                                    <span>{{$data['total_price']}}</span>
                                 </div>
                                 <div class="verified-icon">
                                     <img src="">

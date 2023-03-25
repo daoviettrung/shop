@@ -24,7 +24,16 @@ class BillController extends Controller
     public function checkout(Request $request){
         $city = City::all();
         $this->result['city'] = $city;
-        $this->result['cart'] = $request->session()->all()['cart'][Auth::id()];
+        $total = 0;
+        $this->result['cart'] = [];
+        if(!empty($request->session()->all()['cart'][Auth::id()])){
+            $this->result['cart'] = $request->session()->all()['cart'][Auth::id()];
+            foreach ($this->result['cart'] as $value){
+                $total += (!empty($value['price_sale'])) ? $value['price_sale'] : $value['price'];
+                $total *= $value['quantity'];
+            }
+        }
+        $this->result['total_price'] = number_format($total);
         return view('client.pages.bill.checkout', ['data' => $this->result]);
     }
 

@@ -13,6 +13,7 @@
                       <tr>
                         <th class="">Item Name</th>
                         <th class="">Item Price</th>
+                        <th class="">Size</th>
                         <th class="">Actions</th>
                       </tr>
                     </thead>
@@ -29,8 +30,9 @@
                           </div>
                         </td>
                         <td class="">{{$value['price']}}</td>
+                        <td class="">{{$value['size']}}</td>
                         <td class="">
-                          <a class="product-remove" href="{{url('remove-item-cart/' . $value['id'])}}">Remove</a>
+                          <a class="product-remove" href="{{url('remove-item-cart/' . $value['id'] . '/' . $value['size'])}}">Remove</a>
                         </td>
                       </tr>
                       @endforeach

@@ -11,13 +11,17 @@ function addToCart(id, userId) {
   let lengthUrl = url.length;
   url.splice(lengthUrl - 2, lengthUrl - 1);
   let urlNew = url.join('/');
-  urlNew = urlNew + '/add-cart'
+  urlNew = urlNew + '/add-cart';
+  var size = $('#size-product').val();
+  var quantity = $('#product-quantity').val();
   $.ajax({
     type: "post",
     url: urlNew,
     data: {
       'id': id,
-      'user_id': userId
+      'user_id': userId,
+      'size': size,
+      'quantity': quantity
     },
     dataType: "json",
     success: function (result) {
