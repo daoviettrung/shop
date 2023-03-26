@@ -43,8 +43,7 @@ class CartController extends Controller
             return response()->json('true');
         }
         else{
-            $checkDataAlreadyExist = $this->checkProductAlreadyExistInCart($dataSession, $request->id, $request->size);
-            $checkAndUpdateQuantity = $this->checkQuantity($dataSession, $request->id, $request->quantity);
+            $checkDataAlreadyExist = $this->checkProductAlreadyExistInCart($dataSession, $request->id, $request->size, $request);
             if($checkDataAlreadyExist){
                 $request->session()->push('cart.' . Auth::id(), $data);
             }
@@ -71,18 +70,10 @@ class CartController extends Controller
         return redirect('detail-cart');
     }
 
-    public function checkProductAlreadyExistInCart($dataSession, $id, $size){
-        foreach($dataSession as $value){
+    public function checkProductAlreadyExistInCart($dataSession, $id, $size, $request){
+        foreach($dataSession as $key => $value){
             if($value['id'] == $id && $value['size'] == $size){
-                return false;
-            }
-        }
-        return true;
-    }
-
-    public function checkQuantity($dataSession, $id, $quantity){
-        foreach($dataSession as $value){
-            if($value['id'] == $id && $value['quantity'] != $quantity){
+                $request->session()->put('cart.' .Auth::id().'.' .$key . '.quantity', $request->quantity);
                 return false;
             }
         }
