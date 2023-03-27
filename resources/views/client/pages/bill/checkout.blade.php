@@ -121,6 +121,7 @@
                                 <div class="verified-icon">
                                     <img src="">
                                 </div>
+                                <a id="place-order" href="#" class="btn btn-main mt-20">Place Order</a >
                             </div>
                         </div>
                     </div>
@@ -144,6 +145,7 @@
         </div>
     </div>
     @section('script')
+        <script src="{{ asset('assets/client/js/constant.js?v='.time()) }}"></script>
         <script src="{{ asset('assets/client/js/client-bill.js?v='.time()) }}"></script>
     @endsection
 @endsection
