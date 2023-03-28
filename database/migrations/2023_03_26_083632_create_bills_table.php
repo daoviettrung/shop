@@ -21,6 +21,7 @@ class CreateBillsTable extends Migration
             $table->integer('district_id');
             $table->string('number_phone');
             $table->decimal('price', $precision = 10, $scale = 2);
+            $table->string('address_detail');
             $table->integer('deleted');
             $table->timestamps();
         });

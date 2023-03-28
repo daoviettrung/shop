@@ -28,6 +28,7 @@ Route::get('seed-data-city', [BillController::class, 'seedDataCity']);
 
 
 Route::get('checkout', [BillController::class, 'checkout']);
+Route::post('place-order', [BillController::class, 'placeOrder']);
 Route::post('get-districts-by-city', [BillController::class, 'getDistrictsByCity']);
 Route::get('/', [HomeController::class, 'index']);
 Route::get('categories/{slug}', [HomeController::class, 'searchByCategory']);

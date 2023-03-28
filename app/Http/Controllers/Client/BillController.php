@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\Bills;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
@@ -65,6 +66,24 @@ class BillController extends Controller
                 }
             }
         }
+    }
+
+    public function placeOrder(Request $request){
+        $bill = new Bills();
+        $totalPrice = 0;
+        $dataCart = $request->session()->all()['cart'][Auth::id()];
+        foreach ($dataCart as $value){
+            $totalPrice += (!empty($value['price_sale'])) ? $value['price_sale'] : $value['price'];
+            $totalPrice *= $value['quantity'];
+        }
+//        save bill
+        $bill->user_order_id = Auth::id();
+        $bill->recipient_name = $request->full_name;
+        $bill->city_id = $request->code_city;
+        $bill->district_id = $request->district;
+        $bill->number_phone = $request->number_phone;
+        $bill->address_detail = $request->address_detail;
+
     }
 }
 
