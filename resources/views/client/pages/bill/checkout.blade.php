@@ -145,7 +145,6 @@
         </div>
     </div>
     @section('script')
-
         <script src="{{ asset('assets/client/js/constant.js?v='.time()) }}"></script>
         <script src="{{ asset('assets/client/js/client-bill.js?v='.time()) }}"></script>
     @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Models\BillDetail;
 use App\Models\Bills;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -70,6 +71,7 @@ class BillController extends Controller
 
     public function placeOrder(Request $request){
         $bill = new Bills();
+        $billDetail = new BillDetail();
         $totalPrice = 0;
         $dataCart = $request->session()->all()['cart'][Auth::id()];
         foreach ($dataCart as $value){
@@ -77,13 +79,27 @@ class BillController extends Controller
             $totalPrice *= $value['quantity'];
         }
 //        save bill
+        $idBill = uniqid('',true);
+        $bill->id = $idBill;
         $bill->user_order_id = Auth::id();
         $bill->recipient_name = $request->full_name;
         $bill->city_id = $request->code_city;
         $bill->district_id = $request->district;
         $bill->number_phone = $request->number_phone;
+        $bill->price = $totalPrice;
         $bill->address_detail = $request->address_detail;
-
+        $bill->save();
+//        save bill detail
+        $dataInsert = [];
+        foreach ($dataCart as $key => $value){
+            $dataInsert[$key]['id'] = uniqid('',true);
+            $dataInsert[$key]['product_id'] = $value['id'];
+            $dataInsert[$key]['bill_id'] = $idBill;
+            $dataInsert[$key]['size'] = "{$value['size']}";
+            $dataInsert[$key]['quantity'] = $value['quantity'];
+        }
+        DB::table('bill_detail')->insert($dataInsert);
+        return response()->json('true');
     }
 }
 

@@ -50,7 +50,14 @@ $('#place-order').click(function() {
         },
         dataType: "json",
         success: function (result) {
-            console.log('ok roi');
+            if(result){
+                const Swal = require('sweetalert2');
+                Swal.fire(
+                    'Good job!',
+                    'You clicked the button!',
+                    'success'
+                )
+            }
         },
         error: function (e) {
             console.log(e);

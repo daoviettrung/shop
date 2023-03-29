@@ -14,7 +14,7 @@ class CreateBillsTable extends Migration
     public function up()
     {
         Schema::create('bills', function (Blueprint $table) {
-            $table->id();
+            $table->string('id');
             $table->integer('user_order_id');
             $table->string('recipient_name');
             $table->integer('city_id');
@@ -22,7 +22,7 @@ class CreateBillsTable extends Migration
             $table->string('number_phone');
             $table->decimal('price', $precision = 10, $scale = 2);
             $table->string('address_detail');
-            $table->integer('deleted');
+            $table->integer('deleted')->default(0);
             $table->timestamps();
         });
     }
