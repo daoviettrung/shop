@@ -7,31 +7,63 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
+DROP DATABASE IF EXISTS `ec`;
+CREATE DATABASE `ec` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `ec`;
+
+DROP TABLE IF EXISTS `bill_detail`;
+CREATE TABLE `bill_detail` (
+`id` varchar(50) NOT NULL,
+`product_id` int NOT NULL,
+`bill_id` int NOT NULL,
+`size` varchar(50) NOT NULL,
+`quantity` int NOT NULL,
+`deleted` int NOT NULL DEFAULT '0',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+DROP TABLE IF EXISTS `bills`;
+CREATE TABLE `bills` (
+`id` varchar(50) NOT NULL,
+`user_order_id` int NOT NULL,
+`recipient_name` varchar(50) NOT NULL,
+`city_id` int NOT NULL,
+`district_id` int NOT NULL,
+`number_phone` varchar(50) NOT NULL,
+`price` decimal(10,0) NOT NULL,
+`address_detail` varchar(50) NOT NULL,
+`deleted` int NOT NULL DEFAULT '0',
+PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
 DROP TABLE IF EXISTS `category`;
 CREATE TABLE `category` (
 `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-`name` varchar(255) NOT NULL,
-`slug` varchar(255) NOT NULL,
-`image` varchar(255) DEFAULT NULL,
-`description` varchar(255) DEFAULT NULL,
+`name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+`description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
 `created_at` timestamp NULL DEFAULT NULL,
 `updated_at` timestamp NULL DEFAULT NULL,
 PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `category` (`id`, `name`, `slug`, `image`, `description`, `created_at`, `updated_at`) VALUES
-(1,	'cate 1',	'cate-1',	'1667101218.jpeg',	'dsfsf',	'2022-10-29 20:40:18',	'2022-10-29 20:40:18');
+(1,	'cate 1',	'cate-1',	'1667101218.jpeg',	'dsfsf',	'2022-10-29 20:40:18',	'2022-10-29 20:40:18'),
+(2,	'ididsds',	'ididsds',	NULL,	NULL,	'2023-03-26 21:21:37',	'2023-03-26 21:21:37');
 
 DROP TABLE IF EXISTS `city`;
 CREATE TABLE `city` (
 `id` varchar(10) NOT NULL,
-`name` varchar(50) DEFAULT NULL,
-`code_name` varchar(50) DEFAULT NULL,
+`name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+`code_name` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
 `phone_code` int DEFAULT NULL,
 `created_at` timestamp NULL DEFAULT NULL,
 `updated_at` timestamp NULL DEFAULT NULL,
 PRIMARY KEY (`id`)
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `city` (`id`, `name`, `code_name`, `phone_code`, `created_at`, `updated_at`) VALUES
 ('1',	'Thành phố Hà Nội',	'thanh_pho_ha_noi',	24,	'2023-03-05 01:08:33',	'2023-03-05 01:08:33'),
@@ -107,7 +139,7 @@ CREATE TABLE `district` (
 `created_at` timestamp NULL DEFAULT NULL,
 `updated_at` timestamp NULL DEFAULT NULL,
 PRIMARY KEY (`id`)
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `district` (`id`, `name`, `code_name`, `city_id`, `created_at`, `updated_at`) VALUES
 (1,	'Quận Ba Đình',	'quan_ba_dinh',	1,	'2023-03-05 01:08:33',	'2023-03-05 01:08:33'),
@@ -819,24 +851,24 @@ INSERT INTO `district` (`id`, `name`, `code_name`, `city_id`, `created_at`, `upd
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
 `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-`uuid` varchar(255) NOT NULL,
-`connection` text NOT NULL,
-`queue` text NOT NULL,
-`payload` longtext NOT NULL,
-`exception` longtext NOT NULL,
+`uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+`queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+`payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+`exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
 `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 PRIMARY KEY (`id`),
 UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 DROP TABLE IF EXISTS `migrations`;
 CREATE TABLE `migrations` (
 `id` int unsigned NOT NULL AUTO_INCREMENT,
-`migration` varchar(255) NOT NULL,
+`migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
 `batch` int NOT NULL,
 PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (1,	'2014_10_12_000000_create_users_table',	1),
@@ -850,66 +882,66 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 
 DROP TABLE IF EXISTS `password_resets`;
 CREATE TABLE `password_resets` (
-`email` varchar(255) NOT NULL,
-`token` varchar(255) NOT NULL,
+`email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
 `created_at` timestamp NULL DEFAULT NULL,
 KEY `password_resets_email_index` (`email`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 DROP TABLE IF EXISTS `personal_access_tokens`;
 CREATE TABLE `personal_access_tokens` (
 `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-`tokenable_type` varchar(255) NOT NULL,
+`tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
 `tokenable_id` bigint unsigned NOT NULL,
-`name` varchar(255) NOT NULL,
-`token` varchar(64) NOT NULL,
-`abilities` text,
+`name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
+`abilities` text COLLATE utf8mb4_unicode_ci,
 `last_used_at` timestamp NULL DEFAULT NULL,
 `created_at` timestamp NULL DEFAULT NULL,
 `updated_at` timestamp NULL DEFAULT NULL,
 PRIMARY KEY (`id`),
 UNIQUE KEY `personal_access_tokens_token_unique` (`token`),
 KEY `personal_access_tokens_tokenable_type_tokenable_id_index` (`tokenable_type`,`tokenable_id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 DROP TABLE IF EXISTS `post`;
 CREATE TABLE `post` (
 `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-`name` varchar(255) NOT NULL,
-`slug` varchar(255) NOT NULL,
-`content` longtext NOT NULL,
-`image` varchar(255) DEFAULT NULL,
+`name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`content` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+`image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
 `view` int DEFAULT NULL,
 `user_id` bigint NOT NULL,
 `created_at` timestamp NULL DEFAULT NULL,
 `updated_at` timestamp NULL DEFAULT NULL,
 PRIMARY KEY (`id`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `post` (`id`, `name`, `slug`, `content`, `image`, `view`, `user_id`, `created_at`, `updated_at`) VALUES
-(1,	'test 1',	'test-1',	'<p>dssddssdsddssddsdsd</p>',	'1676731117.jpeg',	15,	1,	'2023-02-18 07:38:37',	'2023-02-18 07:51:21'),
+(1,	'test 1',	'test-1',	'<p>dssddssdsddssddsdsd</p>',	'1676731117.jpeg',	16,	1,	'2023-02-18 07:38:37',	'2023-04-11 20:11:15'),
 (2,	'test 2',	'test-2',	'<p>11111111111</p>',	'1676731134.jpeg',	0,	1,	'2023-02-18 07:38:54',	'2023-02-18 07:38:54');
 
 DROP TABLE IF EXISTS `product`;
 CREATE TABLE `product` (
 `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-`name` varchar(255) NOT NULL,
-`slug` varchar(255) NOT NULL,
-`image` varchar(255) NOT NULL,
+`name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
 `price_sale` int NOT NULL,
 `price` int NOT NULL,
 `cost` int NOT NULL,
 `category` int NOT NULL,
 `number` int NOT NULL,
-`size` varchar(20) DEFAULT NULL,
-`description` varchar(255) DEFAULT NULL,
+`size` varchar(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+`description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
 `created_at` timestamp NULL DEFAULT NULL,
 `updated_at` timestamp NULL DEFAULT NULL,
 PRIMARY KEY (`id`),
 UNIQUE KEY `product_image_unique` (`image`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `product` (`id`, `name`, `slug`, `image`, `price_sale`, `price`, `cost`, `category`, `number`, `size`, `description`, `created_at`, `updated_at`) VALUES
 (4,	'product 1',	'product-1',	'1673067304-0.jpeg,1673067304-1.jpeg',	3213,	2131,	321313,	1,	231,	'xs,s,m,l,xl,xxxxl',	NULL,	'2022-11-19 05:40:30',	'2023-03-25 04:16:14'),
@@ -920,15 +952,15 @@ INSERT INTO `product` (`id`, `name`, `slug`, `image`, `price_sale`, `price`, `co
 DROP TABLE IF EXISTS `slide`;
 CREATE TABLE `slide` (
 `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-`name` varchar(255) NOT NULL,
-`slug` varchar(255) NOT NULL,
-`image` varchar(255) NOT NULL,
-`description` varchar(255) DEFAULT NULL,
+`name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`slug` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`description` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
 `created_at` timestamp NULL DEFAULT NULL,
 `updated_at` timestamp NULL DEFAULT NULL,
 PRIMARY KEY (`id`),
 UNIQUE KEY `slide_image_unique` (`image`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `slide` (`id`, `name`, `slug`, `image`, `description`, `created_at`, `updated_at`) VALUES
 (1,	'slide 1',	'slide-1',	'1668915674.jpg',	NULL,	'2022-11-19 20:41:14',	'2022-11-19 20:41:14'),
@@ -938,21 +970,21 @@ INSERT INTO `slide` (`id`, `name`, `slug`, `image`, `description`, `created_at`,
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
 `id` bigint unsigned NOT NULL AUTO_INCREMENT,
-`name` varchar(255) DEFAULT NULL,
-`email` varchar(255) NOT NULL,
+`name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+`email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
 `email_verified_at` timestamp NULL DEFAULT NULL,
-`password` varchar(255) NOT NULL,
-`phone` varchar(255) DEFAULT NULL,
-`level` varchar(255) DEFAULT NULL,
-`remember_token` varchar(100) DEFAULT NULL,
+`password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+`phone` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+`level` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+`remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
 `created_at` timestamp NULL DEFAULT NULL,
 `updated_at` timestamp NULL DEFAULT NULL,
 PRIMARY KEY (`id`),
 UNIQUE KEY `users_email_unique` (`email`)
-);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `phone`, `level`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1,	'Dao Viet Trung',	'dvtrung@gmail.com',	NULL,	'$2y$10$.BJHEp9VMzuRiywBuBdileM.PVpjjJ0ryfHGPDpX6X.judsDEXjoy',	'0836674168',	'0',	'Hb0XUiXbDKDoZVOmocP1BVrJtesUTMU9WvhNUi38YSROyADitMdeepzZxPD2',	NULL,	NULL),
 (42,	'DDDD',	'viettrung662000@gmail.com',	'2023-02-14 07:54:12',	'$2y$10$3MI8RfhIAht7LiczhD7p3O5jMnt4h2QysgCrF3TpAZ0xRPxQqET2u',	NULL,	'1',	'jyFeZGcVyEfPxo6cCiYNR1Hone2kbaeHYVglEXsQAVO9OILnXGaeNu8bbQVY',	'2023-02-14 07:53:43',	'2023-02-14 08:00:49');
 
--- 2023-03-25 15:21:47
+-- 2023-04-12 21:27:58
