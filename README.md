@@ -8,7 +8,7 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 SET NAMES utf8mb4;
 
 DROP DATABASE IF EXISTS `ec`;
-CREATE DATABASE `ec` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+CREATE DATABASE `ec`;
 USE `ec`;
 
 DROP TABLE IF EXISTS `bill_detail`;
@@ -20,7 +20,7 @@ CREATE TABLE `bill_detail` (
 `quantity` int NOT NULL,
 `deleted` int NOT NULL DEFAULT '0',
 PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `bills`;
@@ -35,7 +35,7 @@ CREATE TABLE `bills` (
 `address_detail` varchar(50) NOT NULL,
 `deleted` int NOT NULL DEFAULT '0',
 PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
 DROP TABLE IF EXISTS `category`;
@@ -63,7 +63,7 @@ CREATE TABLE `city` (
 `created_at` timestamp NULL DEFAULT NULL,
 `updated_at` timestamp NULL DEFAULT NULL,
 PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `city` (`id`, `name`, `code_name`, `phone_code`, `created_at`, `updated_at`) VALUES
 ('1',	'Thành phố Hà Nội',	'thanh_pho_ha_noi',	24,	'2023-03-05 01:08:33',	'2023-03-05 01:08:33'),
@@ -139,7 +139,7 @@ CREATE TABLE `district` (
 `created_at` timestamp NULL DEFAULT NULL,
 `updated_at` timestamp NULL DEFAULT NULL,
 PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 INSERT INTO `district` (`id`, `name`, `code_name`, `city_id`, `created_at`, `updated_at`) VALUES
 (1,	'Quận Ba Đình',	'quan_ba_dinh',	1,	'2023-03-05 01:08:33',	'2023-03-05 01:08:33'),
