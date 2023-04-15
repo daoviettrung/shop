@@ -1,1 +1,1 @@
-const DOMAIN_URL = 'http://localhost:/shop/public/';
+const DOMAIN_URL = 'http://localhost:8888/shop/public/';

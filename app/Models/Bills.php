@@ -10,4 +10,9 @@ class Bills extends Model
     use HasFactory;
     protected $table = 'bills';
     protected $primaryKey = 'id';
+
+    public function userOrder()
+    {
+        return $this->hasOne('App\Models\User', 'user_order_id');
+    }
 }
