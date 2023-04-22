@@ -51,12 +51,7 @@ $('#place-order').click(function() {
         dataType: "json",
         success: function (result) {
             if(result){
-                const Swal = require('sweetalert2');
-                Swal.fire(
-                    'Good job!',
-                    'You clicked the button!',
-                    'success'
-                )
+                Swal.fire('Order success');
             }
         },
         error: function (e) {

@@ -33,19 +33,19 @@
                                 {{ ++$key }}
                             </td>
                             <td>
-                                {{ $bill->user_order_id->userOrder->name }}
+                                {{ $bill->userOrder->name }}
                             </td>
                             <td>
-                                {{ ++$key }}
+                                {{ $bill->recipient_name }}
                             </td>
                             <td>
-                                {{ $bill->user_order_id }}
+                                {{$bill->number_phone}}
                             </td>
                             <td>
-                                {{ ++$key }}
+                                {{$bill->price}}
                             </td>
                             <td>
-                                {{ $bill->user_order_id }}
+                                {{$bill->created_at}}
                             </td>
                             <td>
                                 <div class="table-data-feature">

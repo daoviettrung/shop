@@ -51,6 +51,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function userOrder()
     {
-        return $this->hasMany('App\Models\Bill', 'user_order_id');
+        return $this->hasMany('App\Models\Bills', 'user_order_id');
     }
 }
