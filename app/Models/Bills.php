@@ -32,4 +32,12 @@ class Bills extends Model
     public function detailBill(){
         return $this->hasMany('App\Models\BillDetail');
     }
+
+    public function cityBill(){
+        return $this->belongsTo('App\Models\City', 'city_id');
+    }
+
+    public function districtBill(){
+        return $this->belongsTo('App\Models\District', 'city_id');
+    }
 }

@@ -5,13 +5,13 @@
             <!-- DATA TABLE -->
             <h3 class="title-5 m-b-35">Order</h3>
             <div id='tool' class="tool">
-                <form class="form-header" action="{{ url('category') }}" method="GET">
+                <form class="form-header" action="{{ url('bill-admin') }}" method="GET">
                     <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas ..." />
                     <button class="au-btn--submit" type="submit">
                         <i class="zmdi zmdi-search"></i>
                     </button>
                 </form>
-                <a href="{{ url('category') }}"> <button class="au-btn--submit bg-danger">reset</button></a>
+                <a href="{{ url('bill-admin') }}"> <button class="au-btn--submit bg-danger">reset</button></a>
             </div>
 
             <div class="table-responsive table-responsive-data2 mt-5">
@@ -22,6 +22,9 @@
                         <th>User name order</th>
                         <th>User name recipient</th>
                         <th>Number phone</th>
+                        <th>City</th>
+                        <th>District</th>
+                        <th>Address detail</th>
                         <th>Total price</th>
                         <th>Created</th>
                     </tr>
@@ -42,6 +45,14 @@
                                 {{$bill->number_phone}}
                             </td>
                             <td>
+                                {{$bill->cityBill->name}}
+                            </td>
+                            <td>
+                                {{$bill->districtBill->name}}
+                            </td>
+                            <td>
+                                {{$bill->address_detail}}
+                            </td><td>
                                 {{$bill->price}}
                             </td>
                             <td>
