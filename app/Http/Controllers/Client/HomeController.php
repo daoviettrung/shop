@@ -30,7 +30,7 @@ class HomeController extends Controller
             $user = DB::table('users')
             ->where('id', Auth::user()->id)->first();
             if(empty($user->email_verified_at) && $user->level != 0){ /* check email verify */
-                return view('auth.login')->withErrors('Cần xác thực email trước khi đăng nhập');
+                return redirect()->route('login')->withErrors('Cần xác thực email trước khi đăng nhập');
             }
         }
         $product = DB::table('product')->simplePaginate(9);
